@@ -5,4 +5,4 @@
 This bot should be pretty good at it.
 
 The word list was obtained from
-[cfreshman's list](https://gist.github.com/cfreshman/a03ef2cba789d8cf00c08f767e0fad7b).
+[cfreshman's list](https://gist.github.com/cfreshman/cdcdf777450c5b5301e439061d29694c).
