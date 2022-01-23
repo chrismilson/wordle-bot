@@ -101,7 +101,7 @@ export class AutoSolver implements ISolver {
     return remaining_words;
   }
 
-  solve(setter: IPuzzle, hard_mode: boolean = true): [string, Result[]][] {
+  solve(setter: IPuzzle, hard_mode = true): [string, Result[]][] {
     const guesses: [string, Result[]][] = [];
     let remaining_words = setter.word_list;
 
