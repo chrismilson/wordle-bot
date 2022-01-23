@@ -5,7 +5,10 @@ export class AutoSolver implements ISolver {
   /**
    * @param remaining_words The remaining possible words
    */
-  private determine_best_guess(remaining_words: string[]): string {
+  private determine_best_guess(
+    remaining_words: string[],
+    possible_guesses: string[],
+  ): string {
     // We want to choose a word such that the expected number of reduced
     // possibilities is the highest. This is hard, so we will do something
     // else.
@@ -41,8 +44,8 @@ export class AutoSolver implements ISolver {
     let best_guesses = [];
     let best_score = -1;
 
-    for (let i = 0; i < remaining_words.length; i++) {
-      const word = remaining_words[i];
+    for (let i = 0; i < possible_guesses.length; i++) {
+      const word = possible_guesses[i];
       const score = get_score(word);
       if (score > best_score) {
         best_guesses = [];
@@ -98,12 +101,15 @@ export class AutoSolver implements ISolver {
     return remaining_words;
   }
 
-  solve(setter: IPuzzle): [string, Result[]][] {
+  solve(setter: IPuzzle, hard_mode: boolean = true): [string, Result[]][] {
     const guesses: [string, Result[]][] = [];
     let remaining_words = setter.word_list;
 
     while (setter.remaining_tries > 0) {
-      const input = this.determine_best_guess(remaining_words);
+      const input = this.determine_best_guess(
+        remaining_words,
+        hard_mode ? remaining_words : setter.word_list,
+      );
       const result = setter.guess(input);
       guesses.push([input, result]);
       remaining_words = this.refine_possible_words(
