@@ -4,6 +4,7 @@ import { IPuzzle, Result } from "../Puzzle/index.ts";
 export class AutoSolver implements ISolver {
   /**
    * @param remaining_words The remaining possible words
+   * @param possible_guesses The valid guesses we can make
    */
   private determine_best_guess(
     remaining_words: string[],
