@@ -1,12 +1,12 @@
 import { Args, parse } from "https://deno.land/std@0.122.0/flags/mod.ts";
 import { HumanSolver } from "./Solver/HumanSolver.ts";
-import { AutoPuzzle, RandomPuzzle } from "./Puzzle/AutoPuzzle.ts";
-import { default as word_list } from "./word-list.json" assert { type: "json" };
+import { AutoPuzzle } from "./Puzzle/AutoPuzzle.ts";
+import { word_list, random_answer } from "./words/index.ts"
 
 function main(args: Args): void {
   const puzzle = "word" in args
     ? new AutoPuzzle(word_list, args.word, args.tries)
-    : new RandomPuzzle(word_list, args.tries);
+    : new AutoPuzzle(word_list, random_answer(), args.tries);
 
   // Interact with the user to get puzzle input
   new HumanSolver().solve(puzzle);
