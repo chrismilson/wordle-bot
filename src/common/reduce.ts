@@ -1,3 +1,4 @@
+import { Result } from "./Result.ts";
 /**
  * @param remaining_words The current remaining possible words
  * @param input The guessed input
@@ -16,25 +17,25 @@ export function refine_possibilities(
         remaining_words = remaining_words.filter((word) => {
           // If the word contains an incorrect letter, then it cannot
           // be the solution.
-          return !word.includes(input[i]);
+          return !word.includes(guess[i]);
         });
         break;
       case Result.PARTIAL:
         remaining_words = remaining_words.filter((word) => {
           // If the word does not include the letter, it cannot be
           // the solution.
-          return word.includes(input[i]);
+          return word.includes(guess[i]);
         }).filter((word) => {
           // If the word is equal to the input at index i, the result would
           // have been green, so it cannot be the solution.
-          return word[i] !== input[i];
+          return word[i] !== guess[i];
         });
         break;
       case Result.CORRECT:
         remaining_words = remaining_words.filter((word) => {
           // If the word does not equal the input at index i, it
           // cannot be the solution.
-          return word[i] === input[i];
+          return word[i] === guess[i];
         });
         break;
     }

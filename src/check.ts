@@ -1,6 +1,6 @@
 import { Args, parse } from "https://deno.land/std@0.122.0/flags/mod.ts";
 import { AutoSolver } from "./Solver/AutoSolver.ts";
-import { format_guess } from "./Solver/index.ts";
+import { format_guess } from "./common/format.ts";
 import { AutoPuzzle } from "./Puzzle/AutoPuzzle.ts";
 import { word_list } from "./words/index.ts";
 

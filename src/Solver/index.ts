@@ -1,5 +1,4 @@
 import { IPuzzle } from "../Puzzle/index.ts";
-import { bgRgb24, white } from "https://deno.land/std@0.122.0/fmt/colors.ts";
 import { Result } from "../common/Result.ts";
 
 /**

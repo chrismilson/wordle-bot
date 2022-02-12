@@ -1,5 +1,7 @@
-import { format_guess, ISolver } from "./index.ts";
+import { ISolver } from "./index.ts";
 import { IPuzzle } from "../Puzzle/index.ts";
+import { format_guess } from "../common/format.ts";
+import { Result } from "../common/Result.ts";
 
 /**
  * Allows a human to try and solve puzzles, by taking input from the console.

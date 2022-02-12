@@ -1,5 +1,6 @@
 import { ISolver } from "./index.ts";
 import { IPuzzle } from "../Puzzle/index.ts";
+import { Result } from "../common/Result.ts";
 import { refine_possibilities } from "../common/reduce.ts";
 
 export class AutoSolver implements ISolver {

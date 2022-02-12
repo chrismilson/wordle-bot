@@ -1,3 +1,5 @@
+import { Result } from "../common/Result.ts";
+
 export class MaxTriesExceededError extends Error {
   constructor() {
     super("Maximum tries exceeded for this puzzle.");

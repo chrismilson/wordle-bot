@@ -1,4 +1,5 @@
 import { IPuzzle } from "./index.ts";
+import { Result } from "../common/Result.ts";
 
 export class AutoPuzzle implements IPuzzle {
   /** The number of tries remaining to solve the puzzle */
