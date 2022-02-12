@@ -1,7 +1,7 @@
 import { Args, parse } from "https://deno.land/std@0.122.0/flags/mod.ts";
 import { HumanSolver } from "./Solver/HumanSolver.ts";
 import { AutoPuzzle } from "./Puzzle/AutoPuzzle.ts";
-import { word_list, random_answer } from "./words/index.ts"
+import { random_answer, word_list } from "./words/index.ts";
 
 function main(args: Args): void {
   const puzzle = "word" in args

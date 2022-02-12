@@ -1,5 +1,5 @@
 import { ISolver } from "./index.ts";
-import { IPuzzle, Result } from "../Puzzle/index.ts";
+import { IPuzzle } from "../Puzzle/index.ts";
 
 export class AutoSolver implements ISolver {
   /**

@@ -4,12 +4,6 @@ export class MaxTriesExceededError extends Error {
   }
 }
 
-export enum Result {
-  INCORRECT = "-",
-  PARTIAL = "?",
-  CORRECT = "!",
-}
-
 export interface IPuzzle {
   /** The number of tries remaining */
   readonly remaining_tries: number;

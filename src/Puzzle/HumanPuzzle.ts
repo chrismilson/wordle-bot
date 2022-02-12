@@ -1,4 +1,4 @@
-import { IPuzzle, Result } from "./index.ts";
+import { IPuzzle } from "./index.ts";
 
 function get_input(): string {
   const buf = new Uint8Array(1024);
