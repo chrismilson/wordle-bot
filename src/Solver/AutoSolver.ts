@@ -1,5 +1,6 @@
 import { ISolver } from "./index.ts";
 import { IPuzzle } from "../Puzzle/index.ts";
+import { refine_possibilities } from "../common/reduce.ts";
 
 export class AutoSolver implements ISolver {
   /**
@@ -60,48 +61,6 @@ export class AutoSolver implements ISolver {
     return best_guesses[Math.floor(Math.random() * best_guesses.length)];
   }
 
-  /**
-   * @param remaining_words The current remaining possible words
-   * @param input The guessed input
-   * @param result The result from the input
-   */
-  private refine_possible_words(
-    remaining_words: string[],
-    input: string,
-    result: Result[],
-  ): string[] {
-    for (let i = 0; i < input.length; i++) {
-      switch (result[i]) {
-        case Result.INCORRECT:
-          remaining_words = remaining_words.filter((word) => {
-            // If the word contains an incorrect letter, then it cannot
-            // be the solution.
-            return !word.includes(input[i]);
-          });
-          break;
-        case Result.PARTIAL:
-          remaining_words = remaining_words.filter((word) => {
-            // If the word does not include the letter, it cannot be
-            // the solution.
-            return word.includes(input[i]);
-          }).filter((word) => {
-            // If the word is equal to the input at index i, the result would
-            // have been green, so it cannot be the solution.
-            return word[i] !== input[i];
-          });
-          break;
-        case Result.CORRECT:
-          remaining_words = remaining_words.filter((word) => {
-            // If the word does not equal the input at index i, it
-            // cannot be the solution.
-            return word[i] === input[i];
-          });
-          break;
-      }
-    }
-    return remaining_words;
-  }
-
   solve(setter: IPuzzle, hard_mode = true): [string, Result[]][] {
     const guesses: [string, Result[]][] = [];
     let remaining_words = setter.word_list;
@@ -113,7 +72,7 @@ export class AutoSolver implements ISolver {
       );
       const result = setter.guess(input);
       guesses.push([input, result]);
-      remaining_words = this.refine_possible_words(
+      remaining_words = refine_possibilities(
         remaining_words,
         input,
         result,
